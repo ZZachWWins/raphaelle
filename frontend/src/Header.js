@@ -12,7 +12,11 @@ function Header({ user, setShowAuth, handleLogout }) {
     <header className="modern-header">
       <div className="header-container">
         <div className="header-brand">
-          <img src="https://1a-1791.com/video/z0/J/j/2/z/Jj2zc.asF-NOLAbutterfly-qvq022.jpeg" className="header-logo" />
+          <img
+            src="https://via.placeholder.com/140"
+            alt="NOLAbutterfly Logo"
+            className="header-logo"
+          />
           <span className="header-tagline">NOLAbutterfly</span>
         </div>
 
