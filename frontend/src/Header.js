@@ -2,42 +2,40 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Header({ user, setShowAuth, handleLogout }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
 
   return (
-    <header className="header">
-      <img src="https://1a-1791.com/video/z0/J/j/2/z/Jj2zc.asF-NOLAbutterfly-qvq022.jpeg" alt="Raphaelle's News Logo" className="header-logo" />
-      <h1 className="subtitle">Raphaelle's News</h1>
-      <div className="auth-section">
-        {user ? (
-          <>
-            <span>Welcome, {user.username}</span>
-            <button onClick={handleLogout} className="auth-btn">Logout</button>
-          </>
-        ) : (
-          <button onClick={() => setShowAuth(true)} className="auth-btn">Login / Signup</button>
-        )}
-      </div>
-      <nav className="nav">
-        <Link to="/" className="nav-link">Home</Link>
-        <Link to="/content" className="nav-link">Content</Link>
-        <Link to="/about" className="nav-link">About</Link>
-        <Link to="/contact" className="nav-link">Contact</Link>
-      </nav>
-      <div className="action-cta-container">
-        <div className="action-ticker">
-          <span>Breaking News: Stay tuned for Raphaelle's latest updates!</span>
+    <header className="modern-header">
+      <div className="header-container">
+        <div className="header-brand">
+          <img src="https://1a-1791.com/video/z0/J/j/2/z/Jj2zc.asF-NOLAbutterfly-qvq022.jpeg" className="header-logo" />
+          <span className="header-tagline">NOLAbutterfly</span>
         </div>
-        <button
-          className="action-mobile-toggle-btn"
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          {isExpanded ? 'Hide' : 'Show'} Actions
+
+        <button className="nav-toggle" onClick={toggleNav} aria-label="Toggle navigation">
+          {isNavOpen ? '✕' : '☰'}
         </button>
-        <div className={`action-cta-list ${isExpanded ? 'expanded' : ''}`}>
-          <a href="https://rumble.com" className="action-cta-btn">Watch on Rumble</a>
-          <a href="https://twitter.com" className="action-cta-btn">Follow on Twitter</a>
-          <a href="https://facebook.com" className="action-cta-btn">Join on Facebook</a>
+
+        <nav className={`header-nav ${isNavOpen ? 'nav-open' : ''}`}>
+          <Link to="/" className="nav-link" onClick={() => setIsNavOpen(false)}>Home</Link>
+          <Link to="/content" className="nav-link" onClick={() => setIsNavOpen(false)}>Content</Link>
+          <Link to="/about" className="nav-link" onClick={() => setIsNavOpen(false)}>About</Link>
+          <Link to="/contact" className="nav-link" onClick={() => setIsNavOpen(false)}>Contact</Link>
+        </nav>
+
+        <div className="header-auth">
+          {user ? (
+            <>
+              <span className="auth-greeting">Hey, {user.username}</span>
+              <button onClick={handleLogout} className="auth-btn">Logout</button>
+            </>
+          ) : (
+            <button onClick={() => setShowAuth(true)} className="auth-btn">Login / Signup</button>
+          )}
         </div>
       </div>
     </header>

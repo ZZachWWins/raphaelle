@@ -27,20 +27,23 @@ function Contact() {
   };
 
   return (
-    <main className="main">
-      <section className="landing-section">
-        <h1 className="landing-title">Connect with Raphaelle (NOLAbutterfly)</h1>
-        <p className="landing-text">
-          Got a story tip, question, or just want to chat? Reach out to Raphaelle, your friendly NOLAbutterfly, and join the conversation on truth, freedom, and food sovereignty!
+    <main className="main modern-contact">
+      <section className="contact-section animate-fade-in">
+        <h1 className="contact-title">Connect with NOLAbutterfly</h1>
+        <p className="contact-subtitle">
+          Reach out to Raphaelle for story tips, collabs, or to join the fight for truth and freedom!
         </p>
-        <div className="contact-container flex flex-col md:flex-row gap-8">
+        <div className="contact-container">
           {/* Contact Info */}
-          <div className="flex-1 contact-info">
-            <h2 className="content-title">Get in Touch</h2>
-            <p className="contact-text">
-              <strong>Email:</strong> <a href="mailto:raphaelle@nolabutterfly.com">raphaelle@nolabutterfly.com</a>
+          <div className="contact-info-card">
+            <h2 className="contact-info-title">Get in Touch</h2>
+            <p className="contact-info-text">
+              <strong>Email:</strong>{' '}
+              <a href="mailto:raphaelle@nolabutterfly.com" className="contact-link">
+                raphaelle@nolabutterfly.com
+              </a>
             </p>
-            <p className="contact-text">
+            <p className="contact-info-text">
               <strong>Follow Raphaelle:</strong>
             </p>
             <div className="social-links">
@@ -49,18 +52,15 @@ function Contact() {
               <a href="https://rumble.com/c/NOLAbutterfly" className="social-icon">Rumble</a>
               <a href="https://dailymotion.com/NOLAbutterfly" className="social-icon">Dailymotion</a>
             </div>
-            <p className="contact-text mt-4">
-              Want to dive deeper?{' '}
-              <a href="/content" className="cta-btn inline-block">
-                Explore Raphaelle’s Articles & Videos
-              </a>
-            </p>
+            <a href="/content" className="cta-btn contact-cta">
+              Explore Raphaelle’s Content
+            </a>
           </div>
 
           {/* Contact Form */}
-          <div className="flex-1 contact-form">
-            <h2 className="content-title">Send a Message</h2>
-            <form onSubmit={handleSubmit} className="upload-form">
+          <div className="contact-form-card">
+            <h2 className="contact-info-title">Send a Message</h2>
+            <form onSubmit={handleSubmit} className="modern-contact-form">
               <input
                 type="text"
                 name="name"
@@ -68,7 +68,7 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="Your Name"
                 required
-                className="mb-4"
+                className="form-input"
               />
               <input
                 type="email"
@@ -77,7 +77,7 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="Your Email"
                 required
-                className="mb-4"
+                className="form-input"
               />
               <textarea
                 name="message"
@@ -85,13 +85,13 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="Your Message"
                 required
-                className="mb-4"
+                className="form-textarea"
               />
-              <button type="submit" className="upload-btn" disabled={isSubmitting}>
+              <button type="submit" className="form-submit-btn" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
-            {status && <p className="contact-text mt-4">{status}</p>}
+            {status && <p className="form-status">{status}</p>}
           </div>
         </div>
       </section>
