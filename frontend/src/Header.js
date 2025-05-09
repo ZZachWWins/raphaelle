@@ -6,7 +6,7 @@ function Header({ user, setShowAuth, handleLogout }) {
 
   return (
     <header className="header">
-      <img src="https://via.placeholder.com/150" alt="Raphaelle's News Logo" className="header-logo" />
+      <img src="https://1a-1791.com/video/z0/J/j/2/z/Jj2zc.asF-NOLAbutterfly-qvq022.jpeg" alt="Raphaelle's News Logo" className="header-logo" />
       <h1 className="subtitle">Raphaelle's News</h1>
       <div className="auth-section">
         {user ? (
