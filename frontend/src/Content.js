@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './App.css';
 
 const publisherCode = '3ycfre';
 
@@ -201,7 +202,7 @@ function Content({ user }) {
                       allowFullScreen
                       title={item.title}
                     ></iframe>
-                  </divdfh>                        </div>
+                  </div>
                   <h3 className="content-title">{item.title} {item.isLive && <span>(Live)</span>}</h3>
                   <p className="content-description">{item.description}</p>
                   <p className="content-uploader">By: {item.uploadedBy}</p>
