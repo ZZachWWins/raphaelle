@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css';
 
 const publisherCode = '3ycfre';
 
@@ -121,7 +120,7 @@ function Content({ user }) {
             <input
               type="text"
               value={videoDescription}
-              onChange={(e) => setVideoDescription(e.target.value)}
+              onChange={(e) => setVideoTitle(e.target.value)}
               placeholder="Video Description"
               required
             />
