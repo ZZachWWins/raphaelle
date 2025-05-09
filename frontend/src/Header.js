@@ -13,7 +13,7 @@ function Header({ user, setShowAuth, handleLogout }) {
       <div className="header-container">
         <div className="header-brand">
           <img
-            src="https://via.placeholder.com/140"
+            src="https://1a-1791.com/video/z0/J/j/2/z/Jj2zc.asF-NOLAbutterfly-qvq022.jpeg"
             alt="NOLAbutterfly Logo"
             className="header-logo"
           />
