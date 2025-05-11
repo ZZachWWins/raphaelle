@@ -50,8 +50,14 @@ function Videos({ user }) {
       setVideos(videosRes.data || []);
       alert('Report uploaded Awesomely!');
     } catch (err) {
+      console.error('Upload error:', err);
       alert('Upload failed—check your input!');
     }
+  };
+
+  const handleDescriptionChange = (e) => {
+    console.log('Description input:', e.target.value); // Debug input
+    setDescription(e.target.value);
   };
 
   const handleClearSearch = () => {
@@ -59,11 +65,12 @@ function Videos({ user }) {
   };
 
   const filteredVideos = videos.filter((video) =>
-    video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    video.description.toLowerCase().includes(searchQuery.toLowerCase())
+    video.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    video.description?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   console.log('User object:', user);
+  console.log('Description state:', description); // Debug state
 
   return (
     <main className="main">
@@ -75,12 +82,14 @@ function Videos({ user }) {
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Report Title"
             required
+            className="form-input"
           />
           <input
             type="text"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={handleDescriptionChange}
             placeholder="Report Description"
+            className="form-input"
           />
           <input
             type="text"
@@ -88,6 +97,7 @@ function Videos({ user }) {
             onChange={(e) => setRumbleVideoId(e.target.value)}
             placeholder="Rumble Video ID (e.g., v6p4qz4)"
             required
+            className="form-input"
           />
           <label>
             <input
