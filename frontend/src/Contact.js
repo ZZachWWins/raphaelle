@@ -39,7 +39,7 @@ function Contact() {
             <h2 className="contact-info-title">Get in Touch</h2>
             <p className="contact-info-text">
               <strong>Email:</strong>{' '}
-              <a href="mailto:raphaelle@nolabutterfly.com" className="contact-link">
+              <a href="mailto:raphaellereports@gmail.com" className="contact-link">
                 raphaelle@nolabutterfly.com
               </a>
             </p>
