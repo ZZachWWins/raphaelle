@@ -29,7 +29,7 @@ function Videos({ user }) {
   const handleUpload = async (e) => {
     e.preventDefault();
     if (!user) return alert('Please log in to upload reports!');
-    if (user.role !== 'admin') return alert('Only admins can upload reports!');
+    if (user.role !== 'admin') return alert('Only admins can upload reports! Stay Happy!');
     if (!rumbleVideoId) return alert('Please enter a Rumble video ID!');
 
     try {
@@ -48,7 +48,7 @@ function Videos({ user }) {
       setIsLive(false);
       const videosRes = await axios.get('/.netlify/functions/videos');
       setVideos(videosRes.data || []);
-      alert('Report uploaded to KNN!');
+      alert('Report uploaded Awesomely!');
     } catch (err) {
       alert('Upload failed—check your input!');
     }
@@ -101,9 +101,9 @@ function Videos({ user }) {
           <button type="submit" className="upload-btn">Upload to KNN</button>
         </form>
       ) : user ? (
-        <p className="no-upload">Only admins can upload reports.</p>
+        <p className="no-upload">Only admins can upload reports. Contact Zachary!</p>
       ) : (
-        <p className="no-upload">Please log in to upload reports.</p>
+        <p className="no-upload">Please log in to upload reports. Click Up Top!</p>
       )}
 
       <section className="video-search">
@@ -121,7 +121,7 @@ function Videos({ user }) {
 
       <section className="video-grid">
         {loading ? (
-          <div className="loader">Loading KNN Reports...</div>
+          <div className="loader">Loading Raphaelle Reports...</div>
         ) : filteredVideos.length === 0 ? (
           <p className="no-videos">No matching reports found.</p>
         ) : (
