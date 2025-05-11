@@ -7,7 +7,6 @@ function Videos({ user }) {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
   const [rumbleVideoId, setRumbleVideoId] = useState('');
   const [isLive, setIsLive] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,7 +34,6 @@ function Videos({ user }) {
     try {
       const videoData = {
         title,
-        description,
         rumbleVideoId,
         uploadedBy: user.username,
         isLive,
@@ -43,7 +41,6 @@ function Videos({ user }) {
 
       await axios.post('/.netlify/functions/videos', videoData);
       setTitle('');
-      setDescription('');
       setRumbleVideoId('');
       setIsLive(false);
       const videosRes = await axios.get('/.netlify/functions/videos');
@@ -55,22 +52,15 @@ function Videos({ user }) {
     }
   };
 
-  const handleDescriptionChange = (e) => {
-    console.log('Description input:', e.target.value); // Debug input
-    setDescription(e.target.value);
-  };
-
   const handleClearSearch = () => {
     setSearchQuery('');
   };
 
   const filteredVideos = videos.filter((video) =>
-    video.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    video.description?.toLowerCase().includes(searchQuery.toLowerCase())
+    video.title?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   console.log('User object:', user);
-  console.log('Description state:', description); // Debug state
 
   return (
     <main className="main">
@@ -82,13 +72,6 @@ function Videos({ user }) {
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Report Title"
             required
-            className="form-input"
-          />
-          <input
-            type="text"
-            value={description}
-            onChange={handleDescriptionChange}
-            placeholder="Report Description"
             className="form-input"
           />
           <input
@@ -120,7 +103,7 @@ function Videos({ user }) {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search videos by title or description..."
+          placeholder="Search videos by title..."
           className="search-bar"
         />
         <button onClick={handleClearSearch} className="auth-btn clear-btn">
@@ -145,7 +128,6 @@ function Videos({ user }) {
                 ></iframe>
               </div>
               <h3 className="video-title">{video.title} {video.isLive && <span>(Live)</span>}</h3>
-              <p className="video-description">{video.description}</p>
               <p className="video-uploader">Reported by: {video.uploadedBy}</p>
             </div>
           ))
