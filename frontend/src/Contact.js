@@ -49,7 +49,7 @@ function Contact() {
             <div className="social-links">
               <a href="https://x.com/NOLAbutterfly" className="social-icon">Twitter</a>
               <a href="https://facebook.com/NOLAbutterfly" className="social-icon">Facebook</a>
-              <a href="https://rumble.com/c/NOLAbutterfly" className="social-icon">Rumble</a>
+              <a href="https://rumble.com/user/NOLAbutterfly" className="social-icon">Rumble</a>
               <a href="https://dailymotion.com/NOLAbutterfly" className="social-icon">Dailymotion</a>
             </div>
             <a href="/content" className="cta-btn contact-cta">
