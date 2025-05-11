@@ -81,7 +81,6 @@ function Videos({ user }) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Report Description"
-            required
           />
           <input
             type="text"
