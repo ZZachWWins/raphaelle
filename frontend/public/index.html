@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raphaelle's News</title>
-    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-router-dom@6.22.3/dist/umd/react-router-dom.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.15/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gradient-to-b from-purple-900 to-pink-500">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Raphaelle Reports delivers fearless journalism, breaking news, and investigative stories by Raphaelle, also known as NOLAbutterfly. Stay informed with truth-driven reporting." />
+    <meta name="keywords" content="Raphaelle Reports, raphaelle reports, NOLAbutterfly, investigative journalism, breaking news, truth and freedom" />
+    <meta name="author" content="Raphaelle" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="Raphaelle Reports - Fearless Journalism by NOLAbutterfly" />
+    <meta property="og:description" content="Discover Raphaelle Reports for investigative journalism and breaking news by Raphaelle, the NOLAbutterfly, fighting for truth and freedom." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.raphaellereports.com" />
+    <meta property="og:image" content="https://www.raphaellereports.com/images/raphaelle-reports-logo.jpg" />
+    <meta property="og:site_name" content="Raphaelle Reports" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Raphaelle Reports - Fearless Journalism by NOLAbutterfly" />
+    <meta name="twitter:description" content="Raphaelle Reports offers investigative journalism and breaking news by Raphaelle, the NOLAbutterfly. Join the fight for truth!" />
+    <meta name="twitter:image" content="https://www.raphaellereports.com/images/raphaelle-reports-logo.jpg" />
+    <meta name="twitter:site" content="@NOLAbutterfly" />
+
+    <!-- Canonical URL to Avoid Duplicate Content Issues -->
+    <link rel="canonical" href="https://www.raphaellereports.com" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+
+    <!-- Title Optimized for Target Queries -->
+    <title>Raphaelle Reports - Investigative Journalism by NOLAbutterfly</title>
+
+    <!-- Structured Data (JSON-LD) for News Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsMediaOrganization",
+        "name": "Raphaelle Reports",
+        "alternateName": "raphaelle reports",
+        "url": "https://www.raphaellereports.com",
+        "logo": "https://www.raphaellereports.com/images/raphaelle-reports-logo.jpg",
+        "description": "Raphaelle Reports, led by Raphaelle (NOLAbutterfly), provides investigative journalism, breaking news, and stories fighting for truth and freedom.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "raphaellereports@gmail.com",
+          "contactType": "Customer Service"
+        },
+        "sameAs": [
+          "https://x.com/NOLAbutterfly",
+          "https://facebook.com/NOLAbutterfly",
+          "https://rumble.com/user/NOLAbutterfly",
+          "https://dailymotion.com/NOLAbutterfly"
+        ]
+      }
+    </script>
+  </head>
+  <body>
     <div id="root"></div>
-    <script type="text/babel" src="App.js"></script>
-    <script type="text/babel" src="StarryBackground.js"></script>
-    <script type="text/babel" src="Header.js"></script>
-    <script type="text/babel" src="Footer.js"></script>
-    <script type="text/babel" src="Home.js"></script>
-    <script type="text/babel" src="Content.js"></script>
-    <script type="text/babel" src="About.js"></script>
-    <script type="text/babel" src="Contact.js"></script>
-</body>
+    <script type="module" src="/src/index.js"></script>
+  </body>
 </html>
