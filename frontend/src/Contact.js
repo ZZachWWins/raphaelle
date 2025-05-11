@@ -40,7 +40,7 @@ function Contact() {
             <p className="contact-info-text">
               <strong>Email:</strong>{' '}
               <a href="mailto:raphaellereports@gmail.com" className="contact-link">
-                raphaelle@nolabutterfly.com
+                raphaellereports@gmail.com
               </a>
             </p>
             <p className="contact-info-text">
