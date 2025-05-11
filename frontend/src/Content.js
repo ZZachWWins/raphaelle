@@ -7,7 +7,6 @@ function Content({ user }) {
   const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(true);
   const [videoTitle, setVideoTitle] = useState('');
-  const [videoDescription, setVideoDescription] = useState('');
   const [rumbleVideoId, setRumbleVideoId] = useState('');
   const [isLive, setIsLive] = useState(false);
   const [articleTitle, setArticleTitle] = useState('');
@@ -43,14 +42,12 @@ function Content({ user }) {
     try {
       const videoData = {
         title: videoTitle,
-        description: videoDescription,
         rumbleVideoId,
         uploadedBy: user.username,
         isLive,
       };
       await axios.post('/.netlify/functions/videos', videoData);
       setVideoTitle('');
-      setVideoDescription('');
       setRumbleVideoId('');
       setIsLive(false);
       const videosRes = await axios.get('/.netlify/functions/videos');
@@ -61,6 +58,7 @@ function Content({ user }) {
       ]);
       alert('Video uploaded successfully!');
     } catch (err) {
+      console.error('Video upload error:', err);
       alert('Video upload failed—check your input!');
     }
   };
@@ -90,6 +88,7 @@ function Content({ user }) {
       ]);
       alert('Article uploaded successfully!');
     } catch (err) {
+      console.error('Article upload error:', err);
       alert('Article upload failed—check your input!');
     }
   };
@@ -99,8 +98,7 @@ function Content({ user }) {
   };
 
   const filteredContent = content.filter((item) =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
     item.content?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -116,6 +114,7 @@ function Content({ user }) {
               onChange={(e) => setVideoTitle(e.target.value)}
               placeholder="Video Title"
               required
+              className="form-input"
             />
             <input
               type="text"
@@ -123,6 +122,7 @@ function Content({ user }) {
               onChange={(e) => setRumbleVideoId(e.target.value)}
               placeholder="Rumble Video ID (e.g., v6p4qz4)"
               required
+              className="form-input"
             />
             <label>
               <input
@@ -142,18 +142,21 @@ function Content({ user }) {
               onChange={(e) => setArticleTitle(e.target.value)}
               placeholder="Article Title"
               required
+              className="form-input"
             />
             <textarea
               value={articleContent}
               onChange={(e) => setArticleContent(e.target.value)}
               placeholder="Article Content"
               required
+              className="form-textarea"
             />
             <input
               type="text"
               value={articleImage}
               onChange={(e) => setArticleImage(e.target.value)}
               placeholder="Image URL (optional)"
+              className="form-input"
             />
             <button type="submit" className="upload-btn">Upload Article</button>
           </form>
@@ -196,7 +199,6 @@ function Content({ user }) {
                     ></iframe>
                   </div>
                   <h3 className="content-title">{item.title} {item.isLive && <span>(Live)</span>}</h3>
-                  <p className="content-description">{item.description}</p>
                   <p className="content-uploader">By: {item.uploadedBy}</p>
                 </>
               ) : (

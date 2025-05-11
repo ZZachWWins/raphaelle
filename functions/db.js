@@ -1,4 +1,3 @@
-// functions/db.js
 const mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGODB_URI, {
@@ -7,13 +6,12 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 module.exports = mongoose;
-// Example schema in /functions/db.js or similar
+
+// Updated video schema (if needed elsewhere)
 const videoSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  fileUrl: String,
-  thumbnailUrl: String,
-  uploadedBy: String,
-  views: { type: Number, default: 0 }, // New field
-  createdAt: { type: Date, default: Date.now }
+  title: { type: String, required: true },
+  rumbleVideoId: { type: String, required: true },
+  uploadedBy: { type: String, required: true },
+  isLive: { type: Boolean, default: false },
+  createdAt: { type: Date, default: Date.now },
 });
