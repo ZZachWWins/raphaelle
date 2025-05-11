@@ -1,30 +1,14 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setStatus('');
-
-    try {
-      await axios.post('/.netlify/functions/contact', formData);
-      setStatus('Message sent successfully! Raphaelle will get back to you soon.');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (err) {
-      setStatus('Failed to send message. Please try again later.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  // Create mailto link with form data
+  const mailtoLink = `mailto:raphaellereports@gmail.com?subject=Message from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`From: ${formData.name} (${formData.email})\n\n${formData.message}`)}`;
 
   return (
     <main className="main modern-contact">
@@ -60,7 +44,7 @@ function Contact() {
           {/* Contact Form */}
           <div className="contact-form-card">
             <h2 className="contact-info-title">Send a Message</h2>
-            <form onSubmit={handleSubmit} className="modern-contact-form">
+            <form className="modern-contact-form">
               <input
                 type="text"
                 name="name"
@@ -87,11 +71,19 @@ function Contact() {
                 required
                 className="form-textarea"
               />
-              <button type="submit" className="form-submit-btn" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
+              <a
+                href={mailtoLink}
+                className="form-submit-btn"
+                onClick={(e) => {
+                  if (!formData.name || !formData.email || !formData.message) {
+                    e.preventDefault();
+                    alert('Please fill out all fields before sending.');
+                  }
+                }}
+              >
+                Send Message
+              </a>
             </form>
-            {status && <p className="form-status">{status}</p>}
           </div>
         </div>
       </section>
