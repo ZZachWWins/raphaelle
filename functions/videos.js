@@ -4,7 +4,6 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 
 const videoSchema = new mongoose.Schema({
   title: String,
-  description: String,
   rumbleVideoId: String,
   uploadedBy: String,
   isLive: Boolean,
@@ -14,7 +13,7 @@ const Video = mongoose.model('Video', videoSchema);
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'POST') {
-    const { title, description, rumbleVideoId, uploadedBy, isLive } = JSON.parse(event.body);
+    const { title, rumbleVideoId, uploadedBy, isLive } = JSON.parse(event.body);
     const newVideo = new Video({ title, description, rumbleVideoId, uploadedBy, isLive });
     await newVideo.save();
     return {
