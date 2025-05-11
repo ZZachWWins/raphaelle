@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const publisherCode = '3ycfre';
+const publisherCode = 'o0eoz';
 
 function Videos({ user }) {
   const [videos, setVideos] = useState([]);
