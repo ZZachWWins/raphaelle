@@ -119,13 +119,6 @@ function Content({ user }) {
             />
             <input
               type="text"
-              value={videoDescription}
-              onChange={(e) => setVideoTitle(e.target.value)}
-              placeholder="Video Description"
-              required
-            />
-            <input
-              type="text"
               value={rumbleVideoId}
               onChange={(e) => setRumbleVideoId(e.target.value)}
               placeholder="Rumble Video ID (e.g., v6p4qz4)"
